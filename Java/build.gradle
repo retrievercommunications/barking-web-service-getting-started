@@ -1,0 +1,30 @@
+buildscript{
+	repositories{
+		jcenter()
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'no.nils:wsdl2java:0.10'
+	}
+}
+
+apply plugin :'java'
+apply plugin :'no.nils.wsdl2java'
+
+repositories{
+	mavenCentral()
+}
+
+wsdl2java{
+	wsdlsToGenerate = [
+			["-autoNameResolution", 
+				"-p", "com.barking.webservice.client.generated",
+				"$projectDir/wsdls/BarkingWSImport.wsdl"]
+	]
+	generatedWsdlDir = file("$projectDir/src")
+	wsdlDir = file("$projectDir")
+}
+
+wsdl2javaExt {
+	cxfVersion = "3.1.12"
+}
