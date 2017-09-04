@@ -89,10 +89,10 @@ The easiest way to extract data is to set the export flag to true so that Barkin
 	BarkingWebService.ResultExportStatusUpdates result = exportResponse.result;
     if (result.success)
     {
-    	foreach (BarkingWebService.EStatus eStatusUpdate in result.eStatusUpdate)
-      	{
-                //TODO save each returned eStatus and take any required actions
-         }
+        foreach (BarkingWebService.EStatus eStatusUpdate in result.eStatusUpdate)
+        {
+            //TODO save each returned eStatus and take any required actions
+        }
     }
 
 ## Set Datetime Fields
