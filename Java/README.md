@@ -89,3 +89,15 @@ The easiest way to extract data is to set the export flag to true so that Barkin
             //TODO save each returned eStatus and take any required actions
         }
     }
+
+## Set Datetime Fields
+
+In Java, to set datetime fields like a Job's start date, you will need to create an XMLGregorianCalendar. Here is an example that assumes you have a Date object with the correct start date, time and timezone: 
+
+    String DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    DateFormat format = new SimpleDateFormat(DATETIME_FORMAT);
+    Date startDate = new Date();
+    XMLGregorianCalendar startDateXML =
+        DatatypeFactory.newInstance().newXMLGregorianCalendar(
+            format.format(startDate));
+    job.setStartDate(startDateXML);
