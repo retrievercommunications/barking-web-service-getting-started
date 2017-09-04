@@ -94,3 +94,16 @@ The easiest way to extract data is to set the export flag to true so that Barkin
                 //TODO save each returned eStatus and take any required actions
          }
     }
+
+## Set Datetime Fields
+
+Datetime fields in .NET, come by default with milliseconds (e.g. 2017-09-04T15:54:25.5965803+10:00)
+When setting datetime fields in C#, you will need to zero out the milliseconds using the following code sample:
+
+	DateTime startDate = DateTime.Now;
+	// zero out the milliseconds
+	job.startDate = startDate.AddTicks(-(startDate.Ticks % TimeSpan.TicksPerSecond));
+
+For datetime fields that are optional, .NET will automatically add an extra boolean field called %dateTimefieldName%Specified for every optional datetime field. You will need to set these to true for any optional datetime field that you set.
+
+	job.startDateSpecified = true;
