@@ -110,10 +110,11 @@ When you call an Operation like exportJobs, it can return 1 or more reports. You
         {
             foreach (BarkingWebService.EReport eReport in eJobs.eReport)
             {
-            	// decode the report data which is base64 encoded
-            	byte[] data = Convert.FromBase64String(eReport.reportData);
-            	// save the report to the file system
-                using (BinaryWriter writer = new BinaryWriter(File.Open(@"c:\reports\" + eReport.reportName, FileMode.Create)))
+                // decode the report data which is base64 encoded
+                byte[] data = Convert.FromBase64String(eReport.reportData);
+                // save the report to the file system
+                using (BinaryWriter writer = new BinaryWriter(
+                    File.Open(@"c:\reports\" + eReport.reportName, FileMode.Create)))
                 {
                     writer.Write(data);
                 }
