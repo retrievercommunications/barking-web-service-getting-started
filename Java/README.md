@@ -90,6 +90,36 @@ The easiest way to extract data is to set the export flag to true so that Barkin
         }
     }
 
+## Extracting PDF Reports from Barking
+
+Before trying to extract PDF reports from the Barking Web Service, you will need to check that this feature is enabled for your system.
+
+When you call an Operation like exportJobs, it can return 1 or more reports. You will need to decode each report data using [java.util.Base64](https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html) from Java 8 and then save it to a persistent store like the filesystem or a database using the report name (e.g. Retriever AU Service Report_JOB123_20170703.pdf).
+
+    ResultExportJobs response = myPort.exportJobs(exportJobsRequest);
+    if(response.isSuccess())
+    {
+        for(EJob eJob : response.getEJob())
+        {
+            for(EReport eReport : eJob.getEReport())
+            {
+                // decode the report data which is base64 encoded
+                byte[] pdfContents = Base64.getMimeDecoder().decode(
+                    eReport.getReportData());                 
+                // save the report to the file system
+                try 
+                {
+                    Files.write(Paths.get("c:/reports/" + eReport.getReportName()),
+                        pdfContents);                        
+                } 
+                catch (IOException e) 
+                {
+                    //TODO handle exception    
+                }
+            }
+        }
+    }
+
 ## Set Datetime Fields
 
 In Java, to set datetime fields like a Job's start date, you will need to create an XMLGregorianCalendar. Here is an example that assumes you have a Date object with the correct start date, time and timezone: 
