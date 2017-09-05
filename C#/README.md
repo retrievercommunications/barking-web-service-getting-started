@@ -95,6 +95,33 @@ The easiest way to extract data is to set the export flag to true so that Barkin
         }
     }
 
+## Extracting PDF Reports from Barking
+
+Before trying to extract PDF reports from the Barking Web Service, you will need to check that this feature is enabled for your system.
+
+When you call an Operation like exportJobs, it can return 1 or more reports. You will need to decode each report data by converting from a base64 string and then save it to a persistent store like the filesystem or a database using the report name (e.g. Retriever AU Service Report_JOB123_20170703.pdf).
+
+	BarkingWebService.exportJobsResponse exportResponse = barkingClient.exportJobs(exportJobsRequest);
+
+    BarkingWebService.ResultExportJobs result = exportResponse.result;
+    if (result.success)
+    {
+        foreach (BarkingWebService.EJob eJobs in result.eJob)
+        {
+            foreach (BarkingWebService.EReport eReport in eJobs.eReport)
+            {
+            	// decode the report data which is base64 encoded
+            	byte[] data = Convert.FromBase64String(eReport.reportData);
+            	// save the report to the file system
+                using (BinaryWriter writer = new BinaryWriter(File.Open(@"c:\reports\" + eReport.reportName, FileMode.Create)))
+                {
+                    writer.Write(data);
+                }
+            }
+        }
+    }
+
+
 ## Set Datetime Fields
 
 Datetime fields in .NET, come by default with milliseconds (e.g. 2017-09-04T15:54:25.5965803+10:00)
