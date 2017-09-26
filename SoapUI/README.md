@@ -38,7 +38,7 @@ Expand the exportStatusUpdates node and open the automatically generated `Reques
 
 ![Request 1](images/exportStatusUpdates-Request1.png)
 
-You will be presented with a dialog containing a stubbed request. Delete all other tags inside the <statusUpdate> XML tag except for <updatedSince> and <export> and set the values of these to 3600000 and false, respectively. You should end up with XML similar to this:
+You will be presented with a dialog containing a stubbed request. Delete all other tags inside the `<statusUpdate>` XML tag except for `<updatedSince>` and `<export>` and set the values of these to 3600000 and false, respectively. You should end up with XML similar to this:
 
 ```
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bar="https://test.retriever.com.au/barking">
