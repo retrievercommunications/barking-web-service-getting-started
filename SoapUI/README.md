@@ -46,7 +46,7 @@ You will be presented with a dialog containing a stubbed request. Delete all oth
    <soapenv:Body>
       <bar:exportStatusUpdates>
          <statusUpdate>
-         	  <!--Retrieve the job statuses for the last hour-->
+            <!--Retrieve the job statuses for the last hour-->
             <updatedSince>3600000</updatedSince>
             <export>false</export>            
          </statusUpdate>
