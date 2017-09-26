@@ -1,6 +1,6 @@
 # Using SoapUI with Barking's Web Service
 
-SoapUI is an application built to help testing of SOAP and REST interfaces. It a great way to independently test that you can connect to the Barking Web Service interface from your network.
+SoapUI is an application built to help testing of SOAP and REST interfaces. It is a great way to independently test that you can connect to the Barking Web Service interface from your network.
 
 The free open source edition can be downloaded here:
 https://www.soapui.org/downloads/soapui.html
@@ -17,7 +17,7 @@ Open the WSDL file and check that the "wsdlsoap:address location" towards the en
 
 
 ## Create SOAP Project
-Once installed you will need to create a SOAP Project.
+Once SoapUI is installed, you will need to create a SOAP Project.
 
 ![New SOAP Project](images/new-soap-project.png)
 
@@ -34,7 +34,7 @@ Once installed you will need to create a SOAP Project.
 ## Preparing a Test Request
 
 To validate that you can successfully call the Barking Web Service interface, test with the exportStatusUpdates operation.
-Expand the exportStatusUpdates node and open the automatically generated "Request 1".
+Expand the exportStatusUpdates node and open the automatically generated `Request 1`.
 
 ![Request 1](images/exportStatusUpdates-Request1.png)
 
@@ -68,13 +68,14 @@ Enter your username and password into the fields provided. Leave other fields as
 
 ![Basic Authorization](images/basic-authorization.png)
 
-There is no save or ok on this tab so just click back on the Request 1 XML.
+There is no Save or OK button on this tab so just click back on the `Request 1` XML.
 
 
 ## Send the Test Request and Check the Response
 
 You are now ready to make the request. Hit the ![Play](images/green-play-button.png) green play button in the top left of the dialog. 
-If the request was successful and you have no job statuses to export in the last hour, then the response that should appear with a success value of "true".
+If the request was successful, then the response should contain `success` value of "true".
+Your response may contain additional data from the one below, if the system you are connecting to, has status updates from the last hour.
 
 ```
 <soapenv:Envelope xmlns:ns1="https://test.retriever.com.au/barking" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
