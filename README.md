@@ -14,7 +14,7 @@ This guide will cover short examples for common Enterprise programming languages
 * [Java](Java/README.md)
 
 
-Besides the language specific guides, we would recommend using an independent tool like [SoapUI](https://www.soapui.org/) to test connectivity.
+Besides the language specific guides, we would recommend using an independent tool like [SoapUI](https://www.soapui.org/) to test connectivity. [Here](SoapUI/README.md) is a short guide on using SoapUI to test your connection with the Barking Web Service interface.
 
 
 **Note:** This guide will only help you to get started, it is not meant to replace the Retriever Barking Integration document which details the full Web Service interface specification.
